@@ -13,23 +13,18 @@ class PrioQueue {
       data = data2;
       reserve += GROWTH;
     }
-    data[size++] = n;
-  }
 
-  int dequeue() {
-    int i = 0, max = data[i];
-    for (int j = 1; j < size; ++j) {
-      if (data[j] > max) {
-        max = data[j];
-        i = j;
-      }
+    int i;
+    for (i = size; i >= 0; --i) {
+      if (i == 0  ||  n >= data[i-1])  break;
+      data[i] = data[i-1];
     }
 
-    for (; i < size-1; ++i)  data[i] = data[i+1];
-    --size;
-    return max;
+    data[i] = n;
+    ++size;
   }
 
+  int dequeue()     {  return data[--size];  }
   int peek()        {  return data[size-1];  }
   int size()        {  return size;          }
   void clear()      {  size = 0;             }
