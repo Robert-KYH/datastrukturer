@@ -13,5 +13,9 @@ class Main {
     for (int n = 0; n < 20; ++n)  System.out.print(queue.dequeue()+" ");
     System.out.println();
 
+    PrioQueue prioqueue = new PrioQueue();
+    for (int n = 0; n < 20; ++n)  prioqueue.enqueue(n*7%20);
+    for (int n = 0; n < 20; ++n)  System.out.print(prioqueue.dequeue()+" ");
+    System.out.println();
   }
 }
